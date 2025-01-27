@@ -1,0 +1,15 @@
+.list{
+    margin-right: 0;
+}
+.list-style{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: .3em solid #272965;
+    cursor: pointer;
+    list-style: none;
+    font-size: 17px;
+
+}
+.selected {
+    background-color: #4783c5;
+}

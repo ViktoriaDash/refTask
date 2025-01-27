@@ -1,0 +1,37 @@
+*{
+    margin: 10px;
+
+}
+.block{
+    border: .3em solid brown;
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+}
+.sq{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    cursor: pointer;
+}
+.sq.one{
+    background-color: #fdbe00;
+    top: 20px;
+    left: 150px;
+}
+.sq.two{
+    background-color: #00205f;
+    top: 20px;
+    left: 20px;
+}
+.sq.three{
+    background-color: #4e80bc;
+    top: 200px;
+    left: 50px;
+}
+.sq.four{
+    background-color: #91ce4f;
+    top: 300px;
+    left: 300px;
+}

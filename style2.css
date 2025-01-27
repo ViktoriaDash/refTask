@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    margin: 10px;
+    height: 100vh;
+}
+
+#block {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    border: 2px solid black;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+.active {
+    border: 2px solid black;
+}
