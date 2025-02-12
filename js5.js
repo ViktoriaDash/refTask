@@ -1,37 +1,26 @@
-let thumb = slider.querySelector('.thumb');
+const slider = document.querySelector('.slider');
+const thumb = document.querySelector('.thumb');
 
-thumb.onmousedown = function(event) {
-    event.preventDefault();
+thumb.addEventListener('mousedown', onMouseDown);
 
-    let shiftX = event.clientX - thumb.getBoundingClientRect().left;
+function onMouseDown(e) {
+    e.preventDefault();
 
+    const shiftX = e.clientX - thumb.getBoundingClientRect().left;
 
-    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mousemove', (e) => onMouseMove(e, shiftX));
     document.addEventListener('mouseup', onMouseUp);
+}
 
-    function onMouseMove(event) {
-        let newLeft = event.clientX - shiftX - slider.getBoundingClientRect().left;
+function onMouseUp() {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+}
 
-
-        if (newLeft < 0) {
-            newLeft = 0;
-        }
-        let rightEdge = slider.clientWidth - thumb.clientWidth;
-        if (newLeft > rightEdge) {
-            newLeft = rightEdge;
-        }
-
-        thumb.style.left = newLeft + 'px';
-    }
-
-    function onMouseUp() {
-
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
-    }
-};
+function onMouseMove(e, shiftX) {
+    const newLeft = Math.max(0, Math.min(slider.clientWidth - thumb.clientWidth, e.clientX - shiftX - slider.getBoundingClientRect().left));
+    thumb.style.left = newLeft + 'px';
+}
 
 
-thumb.ondragstart = function() {
-    return false;
-};
+thumb.addEventListener("dragstart", () =>  false);
