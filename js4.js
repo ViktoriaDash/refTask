@@ -1,11 +1,14 @@
-document.querySelectorAll('.list-style').forEach(item => {
-    item.addEventListener('click', (event) => {
-        if (event.ctrlKey || event.metaKey) {
+document.addEventListener('DOMContentLoaded', () => {
+    const listContainer = document.querySelector('.list-container');
 
+    listContainer.addEventListener('click', (event) => {
+        const item = event.target.closest('.list-style');
+        if (!item) return;
+
+        if (event.ctrlKey || event.metaKey) {
             item.classList.toggle('selected');
         } else {
-
-            document.querySelectorAll('.list-style').forEach(el => el.classList.remove('selected'));
+            document.querySelector('.list-style.selected')?.classList.remove('selected');
             item.classList.add('selected');
         }
     });
