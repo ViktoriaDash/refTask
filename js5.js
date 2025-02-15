@@ -9,20 +9,22 @@ thumb.onmousedown = function(event) {
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
 
-    function onMouseMove(event) {
-        let newLeft = event.clientX - shiftX - slider.getBoundingClientRect().left;
+    const sliderRect = slider.getBoundingClientRect();
+    const rightEdge = slider.clientWidth - thumb.clientWidth;
 
+    function onMouseMove(event) {
+        let newLeft = event.clientX - shiftX - sliderRect.left;
 
         if (newLeft < 0) {
             newLeft = 0;
         }
-        let rightEdge = slider.clientWidth - thumb.clientWidth;
         if (newLeft > rightEdge) {
             newLeft = rightEdge;
         }
 
         thumb.style.left = newLeft + 'px';
     }
+
 
     function onMouseUp() {
 

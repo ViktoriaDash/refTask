@@ -1,11 +1,11 @@
-document.querySelectorAll('.list-style').forEach(item => {
+const listItems = document.querySelectorAll('.list-style');
+
+listItems.forEach(item => {
     item.addEventListener('click', (event) => {
         if (event.ctrlKey || event.metaKey) {
-
             item.classList.toggle('selected');
         } else {
-
-            document.querySelectorAll('.list-style').forEach(el => el.classList.remove('selected'));
+            listItems.forEach(el => el.classList.remove('selected'));
             item.classList.add('selected');
         }
     });
